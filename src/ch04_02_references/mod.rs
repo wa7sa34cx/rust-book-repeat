@@ -45,7 +45,7 @@ fn change(some_string: &mut String) {
     some_string.push_str(" time 🎉");
 }
 
-fn dangle() -> &String {
-  let s = String::from("hello");
-  &s
-}
+// fn dangle() -> &String {
+//   let s = String::from("hello");
+//   &s
+// }
