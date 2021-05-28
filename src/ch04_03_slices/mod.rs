@@ -16,13 +16,11 @@ pub fn run() {
     println!("{}", first_word(lit));
 
     /*
-    * Refer to part of an array
-    */
+     * Refer to part of an array
+     */
     let arr = [1, 2, 3, 4, 5];
     let slice = &arr[..3];
     println!("{:?}", slice);
-
-
 }
 
 fn first_word(s: &str) -> &str {
@@ -30,7 +28,7 @@ fn first_word(s: &str) -> &str {
 
     for (i, &val) in bytes.iter().enumerate() {
         if val == b' ' {
-          return &s[..i];
+            return &s[..i];
         }
     }
 

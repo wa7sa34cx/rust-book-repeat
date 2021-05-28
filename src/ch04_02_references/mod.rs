@@ -15,26 +15,25 @@ pub fn run() {
     println!("{}", s);
 
     /*
-    * We also cannot have a mutable reference while we have an immutable one
-    */
+     * We also cannot have a mutable reference while we have an immutable one
+     */
     let s = String::from("hello");
 
     let r1 = &s; // no problem
     let r2 = &s; // no problem
-    // let r3 = &mut s; // BIG PROBLEM
+                 // let r3 = &mut s; // BIG PROBLEM
 
     // println!("{}, {}, and {}", r1, r2, r3);
     println!("{} and {}", r1, r2);
 
     /*
-    * Dangling References
-    */ 
+     * Dangling References
+     */
     // let ref_to_nothing = dangle();
-
 }
 
 fn calc_length(s: &String) -> usize {
-  s.len()
+    s.len()
 }
 
 // fn change(some_string: &String) {

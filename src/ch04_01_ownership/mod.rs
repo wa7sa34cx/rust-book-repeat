@@ -12,7 +12,7 @@ pub fn run() {
     // Move
     let s1 = String::from("hello");
     let s2 = s1; // value MOVED here
-    // assert_eq!(s1, s2);
+                 // assert_eq!(s1, s2);
 
     // Clone
     let s1 = String::from("hello");
@@ -22,8 +22,8 @@ pub fn run() {
     println!();
 
     /*
-    * Ownership and Functions
-    */
+     * Ownership and Functions
+     */
 
     let s = String::from("party 🎉");
     takes_ownership(s);
@@ -39,22 +39,21 @@ pub fn run() {
     let s1 = String::from("Wow 😆");
     let s2 = takes_and_gives_back(s1);
     println!("{}", s2);
-
 }
 
 fn takes_ownership(value: String) {
-  println!("{}", value);
+    println!("{}", value);
 }
 
 fn makes_copy(value: i32) {
-  println!("{}", value);
+    println!("{}", value);
 }
 
 fn gives_ownership() -> String {
-  let s = String::from("Beach 🏖");
-  s
+    let s = String::from("Beach 🏖");
+    s
 }
 
 fn takes_and_gives_back(string: String) -> String {
-  string
+    string
 }

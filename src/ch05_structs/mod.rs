@@ -38,17 +38,17 @@ pub fn run() {
     println!("{:#?}", user2);
 
     /*
-    * Using Tuple Structs
-    */ 
+     * Using Tuple Structs
+     */
     let black = Color(0, 0, 0);
     let origin = Point(0, 0, 0);
 
     /*
-    * Rectangle and its area
-    */
+     * Rectangle and its area
+     */
     let mut rect = Rectangle {
-      width: 60,
-      height: 30,
+        width: 60,
+        height: 30,
     };
     println!("{:#?}", rect);
     println!("The area of rectangle is {}", rect.area());
@@ -57,11 +57,10 @@ pub fn run() {
     println!("The area of new rectangle is {}", rect.area());
 
     /*
-    * Square
-    */
+     * Square
+     */
     let square = Rectangle::square(50);
     println!("The area of square is {}", square.area());
-
 }
 
 #[derive(Debug)]
@@ -74,10 +73,10 @@ struct User {
 
 fn create_user(username: String, email: String) -> User {
     User {
-      username,
-      email,
-      sign_in_count: 1,
-      active: true,
+        username,
+        email,
+        sign_in_count: 1,
+        active: true,
     }
 }
 
@@ -92,7 +91,7 @@ struct Rectangle {
 
 impl Rectangle {
     fn area(&self) -> u32 {
-      self.width * self.height
+        self.width * self.height
     }
 }
 
