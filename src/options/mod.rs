@@ -239,4 +239,174 @@ pub fn run() {
     let y = None;
     assert_eq!(x.or(y), None);
 
+    /*
+    * or_else
+    *
+    * Returns the option if it contains a value, 
+    * otherwise calls f and returns the result.
+    */
+    fn nobody() -> Option<&'static str> { None }
+    fn vikings() -> Option<&'static str> { Some("vikings") }
+
+    assert_eq!(Some("barbarians").or_else(vikings), Some("barbarians"));
+    assert_eq!(None.or_else(vikings), Some("vikings"));
+    assert_eq!(None.or_else(nobody), None);
+
+    /*
+    * xor
+    *
+    * Returns Some if exactly one of self, optb is Some,
+    * otherwise returns None.
+    */
+    println!();
+    let a = Some(5);
+    let b = Some(7);
+    let c: Option<u32> = None;
+    println!("{:?}", a.xor(b));
+    println!("{:?}", a.xor(c));
+    println!("{:?}", b.xor(c));
+    println!("{:?}", c.xor(None));
+
+    /*
+    * get_or_insert
+    *
+    * Inserts value into the option if it is None,
+    * then returns a mutable reference to the contained value.
+    */
+    println!();
+    let mut x = None;
+
+    let y: &mut u32 = x.get_or_insert(5);
+    *y = 7;
+    println!("{:?}", y);
+
+    /*
+    * get_or_insert_default
+    *
+    * This is a nightly-only experimental API.
+    */
+
+    /*
+    * get_or_insert_with
+    *
+    * Inserts a value computed from f into the option if it is None,
+    * then returns a mutable reference to the contained value.
+    */
+    println!();
+    println!("get_or_insert_with --------------");
+
+    let mut x = None;
+    let y: u32 = 5;
+
+    let z: &mut u32 = x.get_or_insert_with(|| y + 5);
+    println!("{:?}", z);
+
+    *z = 32;
+    println!("{:?}", z);
+
+    /*
+    * Some experiment
+    */ 
+    println!();
+    println!("double deref 🤔 --------------");
+
+    let x = &4;
+    let y = &x;
+    println!("{:?}", *(*y));
+
+    /*
+    * take
+    *
+    * Takes the value out of the option, leaving a None in its place.
+    */
+    let mut x = Some(2);
+    let y = x.take();
+    assert_eq!(x, None);
+    assert_eq!(y, Some(2));
+
+    let mut x: Option<u32> = None;
+    let y = x.take();
+    assert_eq!(x, None);
+    assert_eq!(y, None);
+
+    /*
+    * replace
+    *
+    * replace(&mut self, value: T) -> Option<T>
+    *
+    * Replaces the actual value in the option by the value given in parameter,
+    * returning the old value if present,
+    * leaving a Some in its place without deinitializing either one.
+    */
+    let mut x = Some(2);
+    let old = x.replace(5);
+    assert_eq!(x, Some(5));
+    assert_eq!(old, Some(2));
+
+    let mut x = None;
+    let old = x.replace(3);
+    assert_eq!(x, Some(3));
+    assert_eq!(old, None);
+
+    /*
+    * zip
+    *
+    * Zips self with another Option.
+    *
+    * If self is Some(s) and other is Some(o), this method returns Some((s, o)). 
+    * Otherwise, None is returned.
+    */
+    let x = Some(1);
+    let y = Some("hi");
+    let z = None::<u8>;
+
+    assert_eq!(x.zip(y), Some((1, "hi")));
+    assert_eq!(x.zip(z), None);
+
+    /*
+    * copied
+    *
+    * Maps an Option<&T> to an Option<T> by copying the contents of the option.
+    */
+    let x = 12;
+    let opt_x = Some(&x);
+    assert_eq!(opt_x, Some(&12));
+    let copied = opt_x.copied();
+    assert_eq!(copied, Some(12));
+
+    /*
+    * cloned
+    *
+    * Maps an Option<&T> to an Option<T> by cloning the contents of the option.
+    */
+    let x = 12;
+    let opt_x = Some(&x);
+    assert_eq!(opt_x, Some(&12));
+    let cloned = opt_x.cloned();
+    assert_eq!(cloned, Some(12));
+
+    /*
+    * unwrap_or_default
+    *
+    * Returns the contained Some value or a default
+    */
+    let good_year_from_input = "1909";
+    let bad_year_from_input = "190blarg";
+    let good_year = good_year_from_input.parse().ok().unwrap_or_default();
+    let bad_year = bad_year_from_input.parse().ok().unwrap_or_default();
+
+    assert_eq!(1909, good_year);
+    assert_eq!(0, bad_year);
+
+    /*
+    * as_deref
+    *
+    * Converts from Option<T> (or &Option<T>) to Option<&T::Target>.
+    */
+    let x: Option<String> = Some("hey".to_owned());
+    assert_eq!(x.as_deref(), Some("hey"));
+
+    let x: Option<String> = None;
+    assert_eq!(x.as_deref(), None);
+
 }
