@@ -409,4 +409,22 @@ pub fn run() {
     let x: Option<String> = None;
     assert_eq!(x.as_deref(), None);
 
+    /*
+    * flatten
+    *
+    * Converts from Option<Option<T>> to Option<T>
+    */
+    let x: Option<Option<u32>> = Some(Some(6));
+    assert_eq!(Some(6), x.flatten());
+
+    let x: Option<Option<u32>> = Some(None);
+    assert_eq!(None, x.flatten());
+
+    let x: Option<Option<u32>> = None;
+    assert_eq!(None, x.flatten());
+
+    // Flattening only removes one level of nesting at a time:
+    let x: Option<Option<Option<u32>>> = Some(Some(Some(6)));
+    assert_eq!(Some(Some(6)), x.flatten());
+    assert_eq!(Some(6), x.flatten().flatten());
 }
