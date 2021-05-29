@@ -6,6 +6,7 @@ mod ch04_03_slices;
 mod ch05_structs;
 mod ch06_enums;
 mod options;
+mod shapes;
 
 use ch04_01_ownership as ownership;
 use ch04_02_references as references;
@@ -18,5 +19,6 @@ fn main() {
     // slices::run();
     // structs::run();
     // enums::run();
-    options::run();
+    // options::run();
+    shapes::run();
 }
