@@ -1124,8 +1124,65 @@ pub fn run() {
     */
     // let vec = vec!['a', 'b', 'c'];
     // assert_eq!(true, vec.is_ascii());
-    
 
+    /*
+    * sort
+    *
+    * Sorts the slice.
+    */
+    let mut v = vec![-5, 4, 1, -3, 2];
+    v.sort();
+    println!("{:?}", v);
+
+    /*
+    * sort_by
+    *
+    * Sorts the slice with a comparator function.
+    */
+    let mut v = [5, 4, 1, 3, 2];
+    v.sort_by(|a, b| a.cmp(b));
+    assert!(v == [1, 2, 3, 4, 5]);
+
+    // reverse sorting
+    v.sort_by(|a, b| b.cmp(a));
+    assert!(v == [5, 4, 3, 2, 1]);
+
+    /*
+    * sort_by_key
+    *
+    * Sorts the slice with a key extraction function.
+    */
+    let mut v = [-5i32, 4, 1, -3, 2];
+
+    v.sort_by_key(|k| k.abs());
+    assert!(v == [1, 2, -3, 4, -5]);
+
+    /*
+    * to_vec
+    *
+    * Copies self into a new Vec.
+    */
+    let s = [10, 40, 30];
+    let x = s.to_vec();
+    println!("{:?}", x);
+
+    /*
+    * concat
+    *
+    * Copies self into a new Vec.
+    */
+    let vec1 = vec![1, 2, 3];
+    let vec2 = vec![4, 5, 6];
+    let vec3 = [vec1, vec2].concat();
+    println!("{:?}", vec3);
+
+    /*
+    * join
+    *
+    * Flattens a slice of T into a single value Self::Output,
+    * placing a given separator between each.
+    */
+    println!("{:?}", ["hello", "world"].join(" "));
 }
 
 #[derive(Debug)]
