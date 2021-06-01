@@ -128,4 +128,156 @@ pub fn run() {
         s.push(char::from_digit(i, 10).unwrap());
     }
     println!("{}", s);
+
+    /*
+    * as_bytes
+    *
+    * Returns a byte slice of this String’s contents.
+    */
+    let s = String::from("hello");
+    println!("{:?}", s.as_bytes());
+
+    /*
+    * truncate
+    *
+    * Shortens this String to the specified length.
+    */
+    let mut s = String::from("hooch");
+    s.truncate(2);
+    println!("{}", s);
+
+    /*
+    * pop
+    *
+    * Removes the last character from the string buffer and returns it.
+    */
+    let mut s = String::from("foo");
+
+    assert_eq!(s.pop(), Some('o'));
+    assert_eq!(s.pop(), Some('o'));
+    assert_eq!(s.pop(), Some('f'));
+
+    assert_eq!(s.pop(), None);
+
+    /*
+    * remove
+    *
+    * Removes a char from this String at a byte position and returns it.
+    */
+    println!();
+    // let mut s = String::from("foo");
+    let mut s = String::from("фуу");
+    let bytes = s.as_bytes();
+    println!("{:?}", bytes);
+    let f = s.remove(0);
+    println!("{}, {}", s, f);
+
+    /*
+    * retain
+    *
+    * Retains only the characters specified by the predicate.
+    */
+    let mut s = String::from("f_o_ob_ar");
+    s.retain(|c| c != '_');
+    println!("{}", s);
+
+    /*
+    * insert
+    *
+    * Inserts a character into this String at a byte position.
+    */
+    let mut s = String::from("foo");
+    s.insert(0, 'k');
+    println!("{}", s);
+
+    /*
+    * insert_str
+    *
+    * Inserts a string slice into this String at a byte position.
+    */
+    let mut s = String::from("bar");
+    s.insert_str(0, "foo");
+    println!("{}", s);
+
+    /*
+    * len
+    *
+    * Returns the length of this String, in bytes, not chars or graphemes.
+    */
+    println!();
+    let s = String::from("foo");
+    println!("The lenght of `foo` is {}", s.len());
+    let s = String::from("фуу");
+    println!("The lenght of `фуу` is {}", s.len());
+    let s = String::from("🥁");
+    println!("The lenght of `🥁` is {}", s.len());
+
+    /*
+    * is_empty
+    *
+    * Returns true if this String has a length of zero, and false otherwise.
+    */
+    let mut v = String::new();
+    assert!(v.is_empty());
+
+    v.push('a');
+    assert!(!v.is_empty());
+
+    /*
+    * split_off
+    *
+    * Splits the string into two at the given byte index.
+    */
+    let mut hello = String::from("Hello, World!");
+    let world = hello.split_off(7);
+    assert_eq!(hello, "Hello, ");
+    assert_eq!(world, "World!");
+
+    /*
+    * clear
+    *
+    * Truncates this String, removing all contents.
+    */
+    let mut s = String::from("foo");
+
+    s.clear();
+
+    assert!(s.is_empty());
+    assert_eq!(0, s.len());
+    assert_eq!(3, s.capacity());
+
+    /*
+    * drain
+    *
+    * Creates a draining iterator that removes the specified range in the String
+    * and yields the removed chars.
+    */
+    let mut s = String::from("α is alpha, β is beta");
+    let beta_offset = s.find('β').unwrap_or(s.len());
+
+    // Remove the range up until the β from the string
+    let t: String = s.drain(..beta_offset).collect();
+    println!("{}", t);
+
+    /*
+    * replace_range
+    *
+    * Removes the specified range in the string, and replaces it with the given string.
+    * The given string doesn’t need to be the same length as the range.
+    */
+    let mut s = String::from("α is alpha, β is beta");
+    let beta_offset = s.find('β').unwrap_or(s.len());
+
+    // Replace the range up until the β from the string
+    s.replace_range(..beta_offset, "Α is capital alpha; ");
+    assert_eq!(s, "Α is capital alpha; β is beta");
+
+    /*
+    * into_boxed_str
+    *
+    * Converts this String into a Box<str>.
+    */ 
+    let s = String::from("hello");
+    let b = s.into_boxed_str();
+    println!("{:?}", b);
 }
