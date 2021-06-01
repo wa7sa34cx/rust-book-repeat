@@ -8,6 +8,7 @@ mod ch06_enums;
 mod options;
 mod shapes;
 mod vectors;
+mod strings;
 
 
 use ch04_01_ownership as ownership;
@@ -23,6 +24,7 @@ fn main() {
     // enums::run();
     // options::run();
     // shapes::run();
-    vectors::run();
+    // vectors::run();
+    strings::run();
 
 }
