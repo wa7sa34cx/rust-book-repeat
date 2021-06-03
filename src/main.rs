@@ -10,6 +10,7 @@ mod shapes;
 mod vectors;
 mod strings;
 mod primitive_i32;
+mod iterator;
 
 
 use ch04_01_ownership as ownership;
@@ -26,7 +27,8 @@ fn main() {
     // options::run();
     // shapes::run();
     // vectors::run();
-    strings::run();
+    // strings::run();
     // primitive_i32::run();
+    iterator::run();
 
 }
