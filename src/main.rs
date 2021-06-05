@@ -5,13 +5,12 @@ mod ch04_02_references;
 mod ch04_03_slices;
 mod ch05_structs;
 mod ch06_enums;
-mod options;
-mod shapes;
-mod vectors;
-mod strings;
-mod primitive_i32;
 mod iterator;
-
+mod options;
+mod primitive_i32;
+mod shapes;
+mod strings;
+mod vectors;
 
 use ch04_01_ownership as ownership;
 use ch04_02_references as references;
@@ -30,5 +29,4 @@ fn main() {
     // strings::run();
     // primitive_i32::run();
     iterator::run();
-
 }

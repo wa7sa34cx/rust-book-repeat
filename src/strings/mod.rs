@@ -22,9 +22,9 @@ pub fn run() {
     let len = story.len();
     let capacity = story.capacity();
     println!("{:?} {} {}", ptr, len, capacity);
-    
+
     // ---
-    // If a String has enough capacity, adding elements to it will not re-allocate. 
+    // If a String has enough capacity, adding elements to it will not re-allocate.
     // For example, consider this program:
     println!();
     let mut s = String::new();
@@ -37,12 +37,12 @@ pub fn run() {
     }
 
     /*
-    * Implementation
-    */
+     * Implementation
+     */
 
     /*
-    * with_capasity
-    */
+     * with_capasity
+     */
     let mut s = String::with_capacity(10);
     let cap = s.capacity();
 
@@ -55,15 +55,15 @@ pub fn run() {
     println!("cap2 = {}", cap2);
 
     /*
-    * from_utf8_lossy
-    */
+     * from_utf8_lossy
+     */
     let input = b"Hello \xF0\x90\x80World";
     let output = String::from_utf8_lossy(input);
     println!("{}", output);
 
     /*
-    * into_bytes
-    */
+     * into_bytes
+     */
     let s = String::from("hello");
     let bytes = s.into_bytes();
     println!("{:?}", bytes);
@@ -73,41 +73,41 @@ pub fn run() {
     println!("{:?}", bytes);
 
     /*
-    * as_str
-    */
+     * as_str
+     */
     let s = String::from("foo");
     assert_eq!("foo", s.as_str());
 
     /*
-    * as_mut_str
-    */
+     * as_mut_str
+     */
     let mut s = String::from("foobar");
     let s_mut_str = s.as_mut_str();
     s_mut_str.make_ascii_uppercase();
     assert_eq!("FOOBAR", s_mut_str);
 
     /*
-    * push_str
-    */
+     * push_str
+     */
     let mut s = String::from("foo");
     s.push_str("bar");
     println!("{}", s);
 
     /*
-    * reserve
-    *
-    * Ensures that this String’s capacity is at least additional 
-    * bytes larger than its length.
-    */
+     * reserve
+     *
+     * Ensures that this String’s capacity is at least additional
+     * bytes larger than its length.
+     */
     let mut s = String::from('a');
     s.reserve(10);
     println!("{}", s.capacity());
 
     /*
-    * shrink_to_fit
-    *
-    * Shrinks the capacity of this String to match its length.
-    */
+     * shrink_to_fit
+     *
+     * Shrinks the capacity of this String to match its length.
+     */
     let mut s = String::with_capacity(100);
     s.push_str("abc");
     println!("Capacity of `s` is {}", s.capacity());
@@ -115,10 +115,10 @@ pub fn run() {
     println!("Capacity of `s` is {}", s.capacity());
 
     /*
-    * push
-    *
-    * Appends the given char to the end of this String.
-    */
+     * push
+     *
+     * Appends the given char to the end of this String.
+     */
     let mut s = String::from("abc");
 
     for i in 1..=5 {
@@ -130,27 +130,27 @@ pub fn run() {
     println!("{}", s);
 
     /*
-    * as_bytes
-    *
-    * Returns a byte slice of this String’s contents.
-    */
+     * as_bytes
+     *
+     * Returns a byte slice of this String’s contents.
+     */
     let s = String::from("hello");
     println!("{:?}", s.as_bytes());
 
     /*
-    * truncate
-    *
-    * Shortens this String to the specified length.
-    */
+     * truncate
+     *
+     * Shortens this String to the specified length.
+     */
     let mut s = String::from("hooch");
     s.truncate(2);
     println!("{}", s);
 
     /*
-    * pop
-    *
-    * Removes the last character from the string buffer and returns it.
-    */
+     * pop
+     *
+     * Removes the last character from the string buffer and returns it.
+     */
     let mut s = String::from("foo");
 
     assert_eq!(s.pop(), Some('o'));
@@ -160,10 +160,10 @@ pub fn run() {
     assert_eq!(s.pop(), None);
 
     /*
-    * remove
-    *
-    * Removes a char from this String at a byte position and returns it.
-    */
+     * remove
+     *
+     * Removes a char from this String at a byte position and returns it.
+     */
     println!();
     // let mut s = String::from("foo");
     let mut s = String::from("фуу");
@@ -173,37 +173,37 @@ pub fn run() {
     println!("{}, {}", s, f);
 
     /*
-    * retain
-    *
-    * Retains only the characters specified by the predicate.
-    */
+     * retain
+     *
+     * Retains only the characters specified by the predicate.
+     */
     let mut s = String::from("f_o_ob_ar");
     s.retain(|c| c != '_');
     println!("{}", s);
 
     /*
-    * insert
-    *
-    * Inserts a character into this String at a byte position.
-    */
+     * insert
+     *
+     * Inserts a character into this String at a byte position.
+     */
     let mut s = String::from("foo");
     s.insert(0, 'k');
     println!("{}", s);
 
     /*
-    * insert_str
-    *
-    * Inserts a string slice into this String at a byte position.
-    */
+     * insert_str
+     *
+     * Inserts a string slice into this String at a byte position.
+     */
     let mut s = String::from("bar");
     s.insert_str(0, "foo");
     println!("{}", s);
 
     /*
-    * len
-    *
-    * Returns the length of this String, in bytes, not chars or graphemes.
-    */
+     * len
+     *
+     * Returns the length of this String, in bytes, not chars or graphemes.
+     */
     println!();
     let s = String::from("foo");
     println!("The lenght of `foo` is {}", s.len());
@@ -213,10 +213,10 @@ pub fn run() {
     println!("The lenght of `🥁` is {}", s.len());
 
     /*
-    * is_empty
-    *
-    * Returns true if this String has a length of zero, and false otherwise.
-    */
+     * is_empty
+     *
+     * Returns true if this String has a length of zero, and false otherwise.
+     */
     let mut v = String::new();
     assert!(v.is_empty());
 
@@ -224,20 +224,20 @@ pub fn run() {
     assert!(!v.is_empty());
 
     /*
-    * split_off
-    *
-    * Splits the string into two at the given byte index.
-    */
+     * split_off
+     *
+     * Splits the string into two at the given byte index.
+     */
     let mut hello = String::from("Hello, World!");
     let world = hello.split_off(7);
     assert_eq!(hello, "Hello, ");
     assert_eq!(world, "World!");
 
     /*
-    * clear
-    *
-    * Truncates this String, removing all contents.
-    */
+     * clear
+     *
+     * Truncates this String, removing all contents.
+     */
     let mut s = String::from("foo");
 
     s.clear();
@@ -247,11 +247,11 @@ pub fn run() {
     assert_eq!(3, s.capacity());
 
     /*
-    * drain
-    *
-    * Creates a draining iterator that removes the specified range in the String
-    * and yields the removed chars.
-    */
+     * drain
+     *
+     * Creates a draining iterator that removes the specified range in the String
+     * and yields the removed chars.
+     */
     let mut s = String::from("α is alpha, β is beta");
     let beta_offset = s.find('β').unwrap_or(s.len());
 
@@ -260,11 +260,11 @@ pub fn run() {
     println!("{}", t);
 
     /*
-    * replace_range
-    *
-    * Removes the specified range in the string, and replaces it with the given string.
-    * The given string doesn’t need to be the same length as the range.
-    */
+     * replace_range
+     *
+     * Removes the specified range in the string, and replaces it with the given string.
+     * The given string doesn’t need to be the same length as the range.
+     */
     let mut s = String::from("α is alpha, β is beta");
     let beta_offset = s.find('β').unwrap_or(s.len());
 
@@ -273,10 +273,10 @@ pub fn run() {
     assert_eq!(s, "Α is capital alpha; β is beta");
 
     /*
-    * into_boxed_str
-    *
-    * Converts this String into a Box<str>.
-    */ 
+     * into_boxed_str
+     *
+     * Converts this String into a Box<str>.
+     */
     let s = String::from("hello");
     let b = s.into_boxed_str();
     println!("{:?}", b);
