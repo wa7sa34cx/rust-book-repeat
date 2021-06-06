@@ -1,3 +1,5 @@
+use std::cmp::Ordering;
+
 pub(crate) fn run() {
     let a = [1, 2, 3, 4, 5];
 
@@ -302,18 +304,19 @@ pub(crate) fn run() {
 
     let chars = ['g', 'd', 'k', 'k', 'n'];
 
-    let hello: String = chars.iter()
+    let hello: String = chars
+        .iter()
         .map(|&x| x as u8)
         .map(|x| (x + 1) as char)
         .collect();
     println!("{}", hello);
 
     // ---
-    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    let codes: Vec<u8> = alphabet
-        .iter()
-        .map(|&x| x as u8)
-        .collect();
+    let alphabet = [
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+        's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+    ];
+    let codes: Vec<u8> = alphabet.iter().map(|&x| x as u8).collect();
     println!("{:?}", codes);
 
     /*
@@ -323,9 +326,7 @@ pub(crate) fn run() {
      */
     let a = [1, 2, 3];
 
-    let (even, odd): (Vec<i32>, Vec<i32>) = a
-        .iter()
-        .partition(|&n| n % 2 == 0);
+    let (even, odd): (Vec<i32>, Vec<i32>) = a.iter().partition(|&n| n % 2 == 0);
 
     println!("{:?}", even);
     println!("{:?}", odd);
@@ -333,7 +334,7 @@ pub(crate) fn run() {
     /*
      * fold
      *
-     * Folds every element into an accumulator by applying an operation, 
+     * Folds every element into an accumulator by applying an operation,
      * returning the final result.
      */
     let a = [1, 2, 3];
@@ -346,18 +347,14 @@ pub(crate) fn run() {
     /*
      * reduce
      *
-     * Reduces the elements to a single one, 
+     * Reduces the elements to a single one,
      * by repeatedly applying a reducing operation.
      */
     let a = [10, 20, 5, -23, 0];
     let b: [u32; 0] = [];
 
-    let max_a = a.iter().reduce(|a, b| {
-        if a >= b { a } else { b }
-    });
-    let max_b = b.iter().reduce(|a, b| {
-        if a >= b { a } else { b }
-    });
+    let max_a = a.iter().reduce(|a, b| if a >= b { a } else { b });
+    let max_b = b.iter().reduce(|a, b| if a >= b { a } else { b });
     println!("{:?}", max_a);
     println!("{:?}", max_b);
 
@@ -388,5 +385,211 @@ pub(crate) fn run() {
     assert_eq!(a.iter().find(|&&x| x == 2), Some(&2));
     assert_eq!(a.iter().find(|&&x| x == 5), None);
 
-    
+    /*
+     * find_map
+     *
+     * Applies function to the elements of iterator
+     * and returns the first non-none result.
+     */
+    let a = ["lol", "NaN", "2", "5"];
+    let first_number = a.iter().find_map(|s| s.parse().ok());
+    assert_eq!(first_number, Some(2));
+
+    /*
+     * position
+     *
+     * Searches for an element in an iterator, returning its index.
+     */
+    let a = [1, 2, 3];
+    assert_eq!(a.iter().position(|&x| x == 2), Some(1));
+    assert_eq!(a.iter().position(|&x| x == 5), None);
+
+    /*
+     * rposition
+     *
+     * Searches for an element in an iterator from the right, returning its index.
+     */
+    let a = [1, 2, 3];
+    assert_eq!(a.iter().rposition(|&x| x == 3), Some(2));
+    assert_eq!(a.iter().rposition(|&x| x == 5), None);
+
+    /*
+     * max
+     *
+     * Returns the maximum element of an iterator.
+     */
+    let a = [1, 2, 3];
+    let b: Vec<u32> = Vec::new();
+
+    assert_eq!(a.iter().max(), Some(&3));
+    assert_eq!(b.iter().max(), None);
+
+    /*
+     * min
+     *
+     * Returns the minimum element of an iterator.
+     */
+    let a = [1, 2, 3];
+    let b: Vec<u32> = Vec::new();
+
+    assert_eq!(a.iter().min(), Some(&1));
+    assert_eq!(b.iter().min(), None);
+
+    /*
+     * rev
+     *
+     * Reverses an iterator’s direction.
+     */
+    println!();
+    let a = [1, 2, 3, 4, 5];
+    for item in a.iter().rev() {
+        println!("{}", item);
+    }
+
+    /*
+     * unzip
+     *
+     * Converts an iterator of pairs into a pair of containers.
+     */
+    let a = [(1, 2), (3, 4)];
+    let (left, right): (Vec<_>, Vec<_>) = a.iter().cloned().unzip();
+
+    assert_eq!(left, [1, 3]);
+    assert_eq!(right, [2, 4]);
+
+    /*
+     * copied
+     *
+     * Converts an iterator of pairs into a pair of containers.
+     */
+    let a = [1, 2, 3];
+
+    let v_copied: Vec<_> = a.iter().copied().collect();
+
+    // copied is the same as .map(|&x| x)
+    let v_map: Vec<_> = a.iter().map(|&x| x).collect();
+
+    assert_eq!(v_copied, vec![1, 2, 3]);
+    assert_eq!(v_map, vec![1, 2, 3]);
+
+    /*
+     * cloned
+     *
+     * Creates an iterator which clones all of its elements.
+     */
+    let a = [1, 2, 3];
+
+    let v_cloned: Vec<_> = a.iter().cloned().collect();
+
+    // cloned is the same as .map(|&x| x), for integers
+    let v_map: Vec<_> = a.iter().map(|&x| x).collect();
+
+    assert_eq!(v_cloned, vec![1, 2, 3]);
+    assert_eq!(v_map, vec![1, 2, 3]);
+
+    /*
+     * cycle
+     *
+     * Repeats an iterator endlessly.
+     */
+    let a = [1, 2, 3];
+
+    let mut it = a.iter().cycle();
+
+    assert_eq!(it.next(), Some(&1));
+    assert_eq!(it.next(), Some(&2));
+    assert_eq!(it.next(), Some(&3));
+    assert_eq!(it.next(), Some(&1));
+    assert_eq!(it.next(), Some(&2));
+    assert_eq!(it.next(), Some(&3));
+    assert_eq!(it.next(), Some(&1));
+
+    /*
+     * sum
+     *
+     * Sums the elements of an iterator.
+     */
+    let a = [1, 2, 3];
+    let sum: i32 = a.iter().sum();
+    assert_eq!(sum, 6);
+
+    /*
+     * product
+     *
+     * Iterates over the entire iterator, multiplying all the elements
+     */
+    fn factorial(n: u32) -> u32 {
+        (1..=n).product()
+    }
+    println!("{}", factorial(5));
+    println!();
+
+    /*
+     * cmp
+     *
+     * Lexicographically compares the elements of this Iterator with those of another.
+     */
+    assert_eq!([1].iter().cmp([1].iter()), Ordering::Equal);
+    assert_eq!([1].iter().cmp([1, 2].iter()), Ordering::Less);
+    assert_eq!([1, 2].iter().cmp([1].iter()), Ordering::Greater);
+
+    /*
+     * eq
+     *
+     * Determines if the elements of this Iterator are equal to those of another.
+     */
+    assert_eq!([1].iter().eq([1].iter()), true);
+    assert_eq!([1].iter().eq([1, 2].iter()), false);
+
+    /*
+     * ne
+     *
+     * Determines if the elements of this Iterator are not equal to those of another.
+     */
+    assert_eq!([1].iter().ne([1].iter()), false);
+    assert_eq!([1].iter().ne([1, 2].iter()), true);
+
+    /*
+     * lt
+     *
+     * Determines if the elements of this Iterator are lexicographically
+     * less than those of another.
+     */
+    assert_eq!([1].iter().lt([1].iter()), false);
+    assert_eq!([1].iter().lt([1, 2].iter()), true);
+    assert_eq!([1, 2].iter().lt([1].iter()), false);
+    assert_eq!([1, 2].iter().lt([1, 2].iter()), false);
+
+    /*
+     * le
+     *
+     * Determines if the elements of this Iterator are lexicographically
+     * less or equal to those of another.
+     */
+    assert_eq!([1].iter().le([1].iter()), true);
+    assert_eq!([1].iter().le([1, 2].iter()), true);
+    assert_eq!([1, 2].iter().le([1].iter()), false);
+    assert_eq!([1, 2].iter().le([1, 2].iter()), true);
+
+    /*
+     * gt
+     *
+     * Determines if the elements of this Iterator are lexicographically
+     * greater than those of another.
+     */
+    assert_eq!([1].iter().gt([1].iter()), false);
+    assert_eq!([1].iter().gt([1, 2].iter()), false);
+    assert_eq!([1, 2].iter().gt([1].iter()), true);
+    assert_eq!([1, 2].iter().gt([1, 2].iter()), false);
+
+    /*
+     * ge
+     *
+     * Determines if the elements of this Iterator are lexicographically
+     * greater or equal than those of another.
+     */
+    assert_eq!([1].iter().ge([1].iter()), true);
+    assert_eq!([1].iter().ge([1, 2].iter()), false);
+    assert_eq!([1, 2].iter().ge([1].iter()), true);
+    assert_eq!([1, 2].iter().ge([1, 2].iter()), true);
 }
