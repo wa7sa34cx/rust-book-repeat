@@ -15,6 +15,7 @@ mod shapes;
 mod strings;
 mod strs;
 mod vectors;
+mod ch09_errors;
 
 use ch04_01_ownership as ownership;
 use ch04_02_references as references;
@@ -23,6 +24,7 @@ use ch06_enums as enums;
 use ch08_01_vectors as vectors_learning;
 use ch08_02_strings as strings_learning;
 use ch08_03_hashmaps as hashmaps;
+use ch09_errors as errors;
 
 fn main() {
     // ownership::run();
@@ -39,5 +41,6 @@ fn main() {
     // strs::run();
     // vectors_learning::run();
     // strings_learning::run();
-    hashmaps::run();
+    // hashmaps::run();
+    errors::run();
 }
