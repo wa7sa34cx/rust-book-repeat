@@ -42,5 +42,5 @@ fn main() {
     // vectors_learning::run();
     // strings_learning::run();
     // hashmaps::run();
-    errors::run();
+    errors::read_to_string();
 }

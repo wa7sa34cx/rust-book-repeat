@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io;
 use std::io::Read;
 use std::fs;
+use std::error::Error;
 
 pub fn run() {
     println!("Reading file into string...");
@@ -18,5 +19,12 @@ fn read_from_file(filename: &str) -> Result<String, io::Error> {
     f.read_to_string(&mut s)?;
 
     Ok(s)
+}
+
+pub fn read_to_string() {
+    match fs::read_to_string("hello2.txt") {
+        Ok(s) => println!("{}", s),
+        Err(e) => println!("{}", e),
+    } 
 }
 
