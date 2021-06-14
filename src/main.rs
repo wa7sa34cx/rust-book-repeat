@@ -16,6 +16,8 @@ mod strings;
 mod strs;
 mod vectors;
 mod ch09_errors;
+mod ch10_01_generics;
+mod ch10_02_traits;
 
 use ch04_01_ownership as ownership;
 use ch04_02_references as references;
@@ -25,6 +27,8 @@ use ch08_01_vectors as vectors_learning;
 use ch08_02_strings as strings_learning;
 use ch08_03_hashmaps as hashmaps;
 use ch09_errors as errors;
+use ch10_01_generics as generics;
+use ch10_02_traits as traits;
 
 fn main() {
     // ownership::run();
@@ -42,5 +46,7 @@ fn main() {
     // vectors_learning::run();
     // strings_learning::run();
     // hashmaps::run();
-    errors::read_to_string();
+    // errors::read_to_string();
+    // generics::run();
+    traits::run();
 }
