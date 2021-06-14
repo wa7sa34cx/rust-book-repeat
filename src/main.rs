@@ -18,6 +18,7 @@ mod vectors;
 mod ch09_errors;
 mod ch10_01_generics;
 mod ch10_02_traits;
+mod ch10_03_lifetimes;
 
 use ch04_01_ownership as ownership;
 use ch04_02_references as references;
@@ -29,6 +30,7 @@ use ch08_03_hashmaps as hashmaps;
 use ch09_errors as errors;
 use ch10_01_generics as generics;
 use ch10_02_traits as traits;
+use ch10_03_lifetimes as lifetimes;
 
 fn main() {
     // ownership::run();
@@ -48,5 +50,6 @@ fn main() {
     // hashmaps::run();
     // errors::read_to_string();
     // generics::run();
-    traits::run();
+    // traits::run();
+    lifetimes::run();
 }
