@@ -13,10 +13,10 @@ pub fn run() {
     println!("{:?}", my_hash);
 
     println!("The score of `blue` is {:?}", my_hash.get("blue").unwrap());
-    
+
     /*
-    * Implementations
-    */
+     * Implementations
+     */
 
     // Explore this later ...
 }

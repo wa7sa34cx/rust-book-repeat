@@ -41,7 +41,6 @@ fn notify<T: Summary>(item: &T) {
 //           U: Clone + Debug
 // {
 
-
 pub fn run() {
     let article = Article {
         title: String::from("Hello World!"),

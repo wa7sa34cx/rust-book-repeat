@@ -34,5 +34,4 @@ pub fn run() {
     for b in bytes {
         println!("{}", b);
     }
-
 }

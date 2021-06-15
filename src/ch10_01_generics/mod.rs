@@ -15,6 +15,3 @@ pub fn run() {
 
     println!("{}", float.sum());
 }
-
-
-
