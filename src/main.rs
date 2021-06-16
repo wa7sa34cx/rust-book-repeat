@@ -12,6 +12,7 @@ mod ch09_errors;
 mod ch10_01_generics;
 mod ch10_02_traits;
 mod ch10_03_lifetimes;
+mod ch13_01_closures;
 mod iterator;
 mod options;
 mod primitive_i32;
@@ -31,6 +32,7 @@ use ch09_errors as errors;
 use ch10_01_generics as generics;
 use ch10_02_traits as traits;
 use ch10_03_lifetimes as lifetimes;
+use ch13_01_closures as closures;
 
 fn main() {
     // ownership::run();
@@ -44,7 +46,7 @@ fn main() {
     // strings::run();
     // primitive_i32::run();
     // iterator::run();
-    strs::run();
+    // strs::run();
     // vectors_learning::run();
     // strings_learning::run();
     // hashmaps::run();
@@ -52,4 +54,5 @@ fn main() {
     // generics::run();
     // traits::run();
     // lifetimes::run();
+    closures::run();
 }
