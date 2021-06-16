@@ -210,5 +210,125 @@ pub fn run() {
 
     println!();
 
+    /*
+    * len
+    *
+    * Returns the length of self.
+    */
+    let len = "foo".len();
+    println!("{}", len);
+
+    println!();
+
+    /*
+    * lines
+    *
+    * An iterator over the lines of a string, as string slices.
+    */
+    let s = "a\nb\nc\n";
+    let lines = s.lines().count();
+    println!("`{}` has {} lines", s.escape_debug(), lines);
+
+    println!();
+
+    /*
+    * make_ascii_lowercase
+    *
+    * Converts this string to its ASCII lower case equivalent in-place.
+    */
+    let mut s = String::from("aBcMniOOp");
+    s.make_ascii_lowercase();
+    println!("{:?}", s);
+
+    println!();
+
+    /*
+    * make_ascii_uppercase
+    *
+    * Converts this string to its ASCII lower case equivalent in-place.
+    */
+    let mut s = String::from("aBcMniOOp");
+    s.make_ascii_uppercase();
+    println!("{:?}", s);
+
+    println!();
+
+    /*
+    * match_indices
+    *
+    * An iterator over the disjoint matches of a pattern within this string slice 
+    * as well as the index that the match starts at.
+    */
+    let s = "UIu23yabc u23y 989 abc IUy23y 23 2nnnnabc99";
+    let matches: Vec<_> = s.match_indices("abc").collect();
+
+    for (i, _item) in matches {
+        println!("{}", i);
+    }
+
+    println!();
+
+    /*
+    * matches
+    *
+    * An iterator over the disjoint matches of a pattern within the given string slice.
+    */
+    let s = "UIu23yabc u23y 989 abc IUy23y 23 2nnnnabc99";
+    let matches: Vec<_> = s.matches(char::is_numeric).collect();
+
+    for item in matches {
+        println!("{}", item);
+    }
+
+    println!();
+
+    /*
+    * parse
+    *
+    * Parses this string slice into another type.
+    */
+    let num: u32 = "4".parse().unwrap();
+    assert_eq!(4, num);
+
+    // Using the ‘turbofish’ instead of annotating four:
+    let num = "4".parse::<u32>();
+    println!("{:?}", num);
+
+    println!();
+
+    /*
+    * repeat
+    *
+    * Creates a new String by repeating a string n times.
+    */
+    println!("{}", "abc".repeat(4));
+
+    println!();
+
+    /*
+    * replace
+    *
+    * Replaces all matches of a pattern with another string.
+    */
+    let s1 = "this is old";
+    let s2 = s1.replace("old", "new");
+    println!("{}", s1);
+    println!("{}", s2);
+
+    println!();
+
+    /*
+    * replacen
+    *
+    * Replaces first N matches of a pattern with another string.
+    */
+    let s1 = "this is old, old, very old";
+    let s2 = s1.replacen("old", "new", 2);
+    println!("{}", s1);
+    println!("{}", s2);
+
+    println!();
+
+
 
 }
