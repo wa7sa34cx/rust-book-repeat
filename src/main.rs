@@ -44,12 +44,12 @@ fn main() {
     // strings::run();
     // primitive_i32::run();
     // iterator::run();
-    // strs::run();
+    strs::run();
     // vectors_learning::run();
     // strings_learning::run();
     // hashmaps::run();
     // errors::read_to_string();
     // generics::run();
     // traits::run();
-    lifetimes::run();
+    // lifetimes::run();
 }
