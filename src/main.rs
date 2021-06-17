@@ -13,6 +13,7 @@ mod ch10_01_generics;
 mod ch10_02_traits;
 mod ch10_03_lifetimes;
 mod ch13_01_closures;
+mod ch13_02_iterators;
 mod iterator;
 mod options;
 mod primitive_i32;
@@ -33,6 +34,7 @@ use ch10_01_generics as generics;
 use ch10_02_traits as traits;
 use ch10_03_lifetimes as lifetimes;
 use ch13_01_closures as closures;
+use ch13_02_iterators as iterators;
 
 fn main() {
     // ownership::run();
@@ -54,5 +56,6 @@ fn main() {
     // generics::run();
     // traits::run();
     // lifetimes::run();
-    closures::run();
+    // closures::run();
+    iterators::run();
 }

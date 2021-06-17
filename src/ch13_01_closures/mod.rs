@@ -41,7 +41,7 @@ pub fn run() {
         println!("Calculating...");
         num
     });
-    
+
     println!("Do {} steps today!", closure_cache.value(6));
     println!("Do {} steps today!", closure_cache.value(7));
 }
