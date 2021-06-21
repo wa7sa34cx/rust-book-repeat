@@ -328,4 +328,32 @@ pub fn run() {
     println!("{}", s2);
 
     println!();
+
+    /*
+     * rfind
+     *
+     * Returns the byte index for the first character of the rightmost match 
+     * of the pattern in this string slice.
+     */
+    let s = "Löwe 老虎 Léopard Gepardi";
+
+    assert_eq!(s.rfind('L'), Some(13));
+    assert_eq!(s.rfind('é'), Some(14));
+    assert_eq!(s.rfind("pard"), Some(24));
+
+    // More complex patterns with closures:
+    assert_eq!(s.rfind(char::is_whitespace), Some(21));
+
+    assert_eq!(s.rfind("xyz"), None);
+
+    /*
+     * rmatch_indices
+     *
+     * An iterator over the disjoint matches of a pattern within self, 
+     * yielded in reverse order along with the index of the match.
+     */
+    let s = "abcXXXabcYYYabc";
+    let v: Vec<_> = s.rmatch_indices("abc").collect();
+    println!("{:?}", v);
+
 }

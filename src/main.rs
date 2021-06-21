@@ -50,7 +50,7 @@ fn main() {
     // strings::run();
     // primitive_i32::run();
     // iterator::run();
-    // strs::run();
+    strs::run();
     // vectors_learning::run();
     // strings_learning::run();
     // hashmaps::run();
@@ -60,5 +60,5 @@ fn main() {
     // lifetimes::run();
     // closures::run();
     // iterators::run();
-    oop::run();
+    // oop::run();
 }
