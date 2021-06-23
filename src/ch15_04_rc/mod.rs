@@ -3,8 +3,8 @@ enum List {
     Nil,
 }
 
-use List::{Cons, Nil};
 use std::rc::Rc;
+use List::{Cons, Nil};
 
 pub fn run() {
     println!("Reference Counted Smart Pointer\n");
@@ -19,4 +19,3 @@ pub fn run() {
     }
     println!("count after c goes out of scope = {}", Rc::strong_count(&a));
 }
-

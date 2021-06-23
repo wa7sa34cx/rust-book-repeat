@@ -14,6 +14,8 @@ mod ch10_02_traits;
 mod ch10_03_lifetimes;
 mod ch13_01_closures;
 mod ch13_02_iterators;
+mod ch15_01_boxes;
+mod ch15_04_rc;
 mod ch17_oop;
 mod iterator;
 mod options;
@@ -22,8 +24,6 @@ mod shapes;
 mod strings;
 mod strs;
 mod vectors;
-mod ch15_01_boxes;
-mod ch15_04_rc;
 
 use ch04_01_ownership as ownership;
 use ch04_02_references as references;

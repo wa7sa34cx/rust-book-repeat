@@ -332,7 +332,7 @@ pub fn run() {
     /*
      * rfind
      *
-     * Returns the byte index for the first character of the rightmost match 
+     * Returns the byte index for the first character of the rightmost match
      * of the pattern in this string slice.
      */
     let s = "Löwe 老虎 Léopard Gepardi";
@@ -349,7 +349,7 @@ pub fn run() {
     /*
      * rmatch_indices
      *
-     * An iterator over the disjoint matches of a pattern within self, 
+     * An iterator over the disjoint matches of a pattern within self,
      * yielded in reverse order along with the index of the match.
      */
     let s = "abcXXXabcYYYabc";
@@ -364,18 +364,18 @@ pub fn run() {
      */
     let v: Vec<&str> = "abcXXXabcYYYabc".rmatches("abc").collect();
     println!("{:?}", v);
-    
+
     let v: Vec<&str> = "1abc2abc3".rmatches(char::is_numeric).collect();
     println!("{:?}", v);
 
     println!();
 
     /*
-    * rsplit
-    *
-    * An iterator over substrings of the given string slice, 
-    * separated by characters matched by a pattern and yielded in reverse order.
-    */
+     * rsplit
+     *
+     * An iterator over substrings of the given string slice,
+     * separated by characters matched by a pattern and yielded in reverse order.
+     */
     let v: Vec<&str> = "Mary had a little lamb".rsplit(' ').collect();
     println!("{:?}", v);
 
@@ -388,20 +388,20 @@ pub fn run() {
     println!();
 
     /*
-    * rsplit_once
-    *
-    * Splits the string on the last occurrence of the specified delimiter 
-    * and returns prefix before delimiter and suffix after delimiter.
-    */
+     * rsplit_once
+     *
+     * Splits the string on the last occurrence of the specified delimiter
+     * and returns prefix before delimiter and suffix after delimiter.
+     */
     let split = "cfg=foo=bar".rsplit_once('=');
     println!("{:?}", split);
 
     /*
-    * rsplit_terminator
-    *
-    * An iterator over substrings of self, separated by characters matched 
-    * by a pattern and yielded in reverse order.
-    */
+     * rsplit_terminator
+     *
+     * An iterator over substrings of self, separated by characters matched
+     * by a pattern and yielded in reverse order.
+     */
     let v: Vec<&str> = "A.B.".rsplit_terminator('.').collect();
     assert_eq!(v, ["B", "A"]);
 
@@ -409,11 +409,11 @@ pub fn run() {
     assert_eq!(v, ["", "B", "", "A"]);
 
     /*
-    * rsplitn
-    *
-    * An iterator over substrings of this string slice, separated by a pattern,
-    * starting from the end of the string, restricted to returning at most n items.
-    */
+     * rsplitn
+     *
+     * An iterator over substrings of this string slice, separated by a pattern,
+     * starting from the end of the string, restricted to returning at most n items.
+     */
     let v: Vec<&str> = "Mary had a little lamb".rsplitn(3, ' ').collect();
     println!("{:?}", v);
 
@@ -424,7 +424,4 @@ pub fn run() {
     println!("{:?}", v);
 
     println!();
-
-    
-
 }

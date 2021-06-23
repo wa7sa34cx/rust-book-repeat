@@ -10,7 +10,6 @@ pub fn run() {
 
     let temp = my.average;
     println!("Can I get an average: {}", temp);
-
 }
 
 struct MyStruct {
@@ -50,5 +49,4 @@ impl MyStruct {
         let sum: i32 = self.list.iter().sum();
         self.average = sum as f64 / self.list.len() as f64;
     }
-
 }
