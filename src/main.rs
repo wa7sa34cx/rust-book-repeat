@@ -18,6 +18,7 @@ mod ch15_01_boxes;
 mod ch15_04_rc;
 mod ch16_01_fearless_concurrency;
 mod ch16_02_channel;
+mod ch16_03_mutexes;
 mod ch17_oop;
 mod iterator;
 mod options;
@@ -68,5 +69,6 @@ fn main() {
     // boxes::run();
     // ch15_04_rc::run();
     // ch16_01_fearless_concurrency::run();
-    ch16_02_channel::run();
+    // ch16_02_channel::run();
+    ch16_03_mutexes::run();
 }
