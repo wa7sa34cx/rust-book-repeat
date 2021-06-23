@@ -16,6 +16,8 @@ mod ch13_01_closures;
 mod ch13_02_iterators;
 mod ch15_01_boxes;
 mod ch15_04_rc;
+mod ch16_01_fearless_concurrency;
+mod ch16_02_channel;
 mod ch17_oop;
 mod iterator;
 mod options;
@@ -64,5 +66,7 @@ fn main() {
     // iterators::run();
     // oop::run();
     // boxes::run();
-    ch15_04_rc::run();
+    // ch15_04_rc::run();
+    // ch16_01_fearless_concurrency::run();
+    ch16_02_channel::run();
 }
