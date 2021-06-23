@@ -356,4 +356,75 @@ pub fn run() {
     let v: Vec<_> = s.rmatch_indices("abc").collect();
     println!("{:?}", v);
 
+    /*
+     * rmatches
+     *
+     * An iterator over the disjoint matches of a pattern within this string slice,
+     * yielded in reverse order.
+     */
+    let v: Vec<&str> = "abcXXXabcYYYabc".rmatches("abc").collect();
+    println!("{:?}", v);
+    
+    let v: Vec<&str> = "1abc2abc3".rmatches(char::is_numeric).collect();
+    println!("{:?}", v);
+
+    println!();
+
+    /*
+    * rsplit
+    *
+    * An iterator over substrings of the given string slice, 
+    * separated by characters matched by a pattern and yielded in reverse order.
+    */
+    let v: Vec<&str> = "Mary had a little lamb".rsplit(' ').collect();
+    println!("{:?}", v);
+
+    let v: Vec<&str> = "lionXXtigerXleopard".rsplit('X').collect();
+    println!("{:?}", v);
+
+    let v: Vec<&str> = "lion::tiger::leopard".rsplit("::").collect();
+    println!("{:?}", v);
+
+    println!();
+
+    /*
+    * rsplit_once
+    *
+    * Splits the string on the last occurrence of the specified delimiter 
+    * and returns prefix before delimiter and suffix after delimiter.
+    */
+    let split = "cfg=foo=bar".rsplit_once('=');
+    println!("{:?}", split);
+
+    /*
+    * rsplit_terminator
+    *
+    * An iterator over substrings of self, separated by characters matched 
+    * by a pattern and yielded in reverse order.
+    */
+    let v: Vec<&str> = "A.B.".rsplit_terminator('.').collect();
+    assert_eq!(v, ["B", "A"]);
+
+    let v: Vec<&str> = "A..B..".rsplit_terminator(".").collect();
+    assert_eq!(v, ["", "B", "", "A"]);
+
+    /*
+    * rsplitn
+    *
+    * An iterator over substrings of this string slice, separated by a pattern,
+    * starting from the end of the string, restricted to returning at most n items.
+    */
+    let v: Vec<&str> = "Mary had a little lamb".rsplitn(3, ' ').collect();
+    println!("{:?}", v);
+
+    let v: Vec<&str> = "lion::tiger::leopard".rsplitn(2, "::").collect();
+    println!("{:?}", v);
+
+    let v: Vec<&str> = "abc1defXghi".rsplitn(3, |c| c == '1' || c == 'X').collect();
+    println!("{:?}", v);
+
+    println!();
+
+    
+
 }
