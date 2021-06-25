@@ -21,6 +21,8 @@ mod ch16_02_channel;
 mod ch16_03_mutexes;
 mod ch19_02_advanced_traits;
 mod ch19_02_dogs;
+mod ch19_03_adv_types;
+mod ch19_04;
 mod ch17_oop;
 mod iterator;
 mod options;
@@ -74,5 +76,7 @@ fn main() {
     // ch16_02_channel::run();
     // ch16_03_mutexes::run();
     // ch19_02_advanced_traits::run();
-    ch19_02_dogs::run();
+    // ch19_02_dogs::run();
+    // ch19_03_adv_types::run();
+    ch19_04::run();
 }
