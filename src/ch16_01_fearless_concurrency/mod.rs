@@ -19,5 +19,4 @@ pub fn run() {
     handle.join().unwrap();
 
     // thread::sleep(Duration::from_millis(10));
-    
 }
