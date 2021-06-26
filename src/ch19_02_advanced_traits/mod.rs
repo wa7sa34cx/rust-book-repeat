@@ -28,7 +28,7 @@ impl Human {
 
 pub fn run() {
     let person = Human;
-    
+
     Pilot::fly(&person);
     Wizard::fly(&person);
     person.fly();
