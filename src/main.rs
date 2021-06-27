@@ -60,7 +60,7 @@ fn main() {
     // strings::run();
     // primitive_i32::run();
     // iterator::run();
-    // strs::run();
+    strs::run();
     // vectors_learning::run();
     // strings_learning::run();
     // hashmaps::run();
@@ -80,5 +80,5 @@ fn main() {
     // ch19_02_dogs::run();
     // ch19_03_adv_types::run();
     // ch19_04::run();
-    num_cpus_crate::run();
+    // num_cpus_crate::run();
 }
