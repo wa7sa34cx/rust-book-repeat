@@ -428,7 +428,7 @@ pub fn run() {
     /*
      * split
      *
-     * An iterator over substrings of this string slice, 
+     * An iterator over substrings of this string slice,
      * separated by characters matched by a pattern.
      */
     let v: Vec<&str> = "Mary had a little lamb".split(' ').collect();
@@ -449,6 +449,8 @@ pub fn run() {
     let v: Vec<&str> = "lionXtigerXleopard".split(char::is_uppercase).collect();
     assert_eq!(v, ["lion", "tiger", "leopard"]);
 
-    let v: Vec<&str> = "2020-11-03 23:59".split(&['-', ' ', ':', '@'][..]).collect();
+    let v: Vec<&str> = "2020-11-03 23:59"
+        .split(&['-', ' ', ':', '@'][..])
+        .collect();
     assert_eq!(v, ["2020", "11", "03", "23", "59"]);
 }
