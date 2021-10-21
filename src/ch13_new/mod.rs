@@ -1,4 +1,4 @@
-fn run() {
+pub fn run() {
     let x = Box::new(5);
 
     println!("{}", x);
@@ -19,5 +19,18 @@ fn run() {
 
     for i in 1..=5 {
         println!("{}. -", i);
+    }
+
+    let mut v = vec![1, 2, 3].into_iter();
+    // let v = v.into_iter();
+
+    for _ in 0..5 {
+        println!("{:?}", v.next());
+    }
+
+    let v = [1, 2, 3];
+
+    for i in v.iter() {
+        println!("{:?}", i);
     }
 }
